@@ -1392,7 +1392,31 @@ No exemplo acima, é usada a URL do módulo **autocomplete**, onde a documentaç
   }
 ```
 
-**Atenção:**
+Dentro da classe há o seguinte código:
+
+```
+//---------- inicio codigo importante
+//
+//Coisas que não serão apagadas podem ser digitadas aqui dentro.
+//
+
+public function toHtmlOutput ()
+{
+  self::$mainHtmlCodeCStr .= "<input id=\"{$this->idElementCStr}\" {$this->htmlTagExtraCStr}>";
+  return self::$mainHtmlCodeCStr;
+}
+
+
+//---------- fim codigo importante
+```
+
+### Cuidado:
+
+**Não mexa** nas linhas de comentário. A próxima vez que a classe rodar, o conteúdo entre as linhas de comentários não será apagado.
+
+A função **toHtmlOutput ()** deve ser feita na mão e deve conter o elemento html correspondente ao elemento Java Script como determinado na classe do próprio **KendoUI**.
+
+### Atenção:
 
 Esta classe usa tags html muito bem padronizadas pela documentação e caso a documentação mude de padrão, a mesma deixa de funcionar.
 
