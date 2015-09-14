@@ -1,20 +1,26 @@
 # KendoUI
 
-Pessoal, a classe **classMaker** foi feita por mim para facilitar o uso do KendoUI ( http://www.telerik.com/kendo-ui ) da Telerik ( telerik.com ) e objetivo dessa classe é criar uma classe php para cada componente disponibilizado pelo KendoUI.
+Pessoal,
 
-A classe vai usar o diretório de saída **"./class/output/"** e dentro dele vai haver uma classe para cada módulo processado.
+A classe **classMaker** foi feita por mim para facilitar o uso do **KendoUI** ( http://www.telerik.com/kendo-ui ) da **Telerik** ( http://www.telerik.com ) e objetivo dessa classe é criar uma classe **php** para cada componente disponibilizado pelo **KendoUI**.
 
-Perceba que a classe vai criar uma nova classe php pronta para uso, porém, esta nova classe necessita da classe **javascript.class.php** contida no repositório para funcionar.
+Para quem não está familiarizado com o KendoUI ele é um excelente framework Java Script e serve para montar a parte do frontend do site com componentes de excelente qualidade. O problema é que ele é um ferramenta cara e a versão mais barata, a minha, não dá suporte ao backend, então eu fiz este código para poder ter minhas próprias classes **php** funcionando de forma correta e prática. 
 
-Repita o mesmo procedimento para cada módulo.
+A classe usa o diretório de saída **"./class/output/"** e dentro dele vai haver uma classe para cada módulo processado.
 
-**Instruções de uso:** Coloque o arquivo da classe no seu servidor e depois instancie a classe da seguinte forma:
+Perceba que a classe vai criar uma nova classe **php** pronta para uso, porém, esta nova classe necessita da classe **javascript.class.php** contida neste repositório para funcionar.
+
+### Instruções de uso:
+
+Coloque o arquivo da classe no seu servidor e depois instancie a classe da seguinte forma:
 
 ```
 new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete" );
 ```
 
-No exemplo acima, é usada a URL do módulo autocomplete, onde a documentação do mesmo fica em "http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete". Após a classe rodar, a mesma vai gerar o seguinte código no diretório de saída:
+**Obs.:** Você deve fazer o mesmo para cada módulo.
+
+No exemplo acima, é usada a URL do módulo **autocomplete**, onde a documentação do mesmo fica em **"http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete"**. Após a classe rodar, a mesma vai gerar o seguinte código no diretório de saída:
 
 ```php
 ./class/output/KendoUIAutoComplete.class.php
@@ -1385,3 +1391,13 @@ No exemplo acima, é usada a URL do módulo autocomplete, onde a documentação 
     
   }
 ```
+
+**Atenção:**
+
+Esta classe usa tags html muito bem padronizadas pela documentação e caso a documentação mude de padrão, a mesma deixa de funcionar.
+
+Lembre-se, este conjunto de código é fornecido com o intuito de ajudar, porém, não há garantias de funcionamento ou qualquer forma de obrigação de suporte da minha parte para que você use o código.
+
+O código é livre para ser copiado e alterado, porém, sempre que você fizer qualquer alteração no mesmo, você deve deixar claro que o seu trabalho se baseia no meu trabalho e divulgar o meu nome.
+
+Ass. Helmut Kemper - helmut.kemper@gmail.com
