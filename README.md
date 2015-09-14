@@ -2,15 +2,23 @@
 
 Pessoal, a classe **classMaker** foi feita por mim para facilitar o uso do KendoUI ( http://www.telerik.com/kendo-ui ) da Telerik ( telerik.com ) e objetivo dessa classe é criar uma classe php para cada componente disponibilizado pelo KendoUI.
 
-Para isto, você vai colocar o arquivo da classe no seu servidor e depois vai instanciar o arquivo da seguinte forma:
+A classe vai usar o diretório de saída **"./class/output/"** e dentro dele vai haver uma classe para cada módulo processado.
+
+Perceba que a classe vai criar uma nova classe php pronta para uso, porém, esta nova classe necessita da classe **javascript.class.php** contida no repositório para funcionar.
+
+Repita o mesmo procedimento para cada módulo.
+
+**Instruções de uso:** Coloque o arquivo da classe no seu servidor e depois instancie a classe da seguinte forma:
 
 ```
-$o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete" );
+new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete" );
 ```
-
-A classe vai usar o diretório de saída "./class/output/" e dentro dele vai haver uma classe para cada módulo processado.
 
 No exemplo acima, é usada a URL do módulo autocomplete, onde a documentação do mesmo fica em "http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete". Após a classe rodar, a mesma vai gerar o seguinte código no diretório de saída:
+
+```php
+./class/output/KendoUIAutoComplete.class.php
+```
 
 ```php
 <?php
