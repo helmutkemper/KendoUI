@@ -4,13 +4,35 @@ Pessoal,
 
 A classe **classMaker** foi feita por mim para facilitar o uso do **KendoUI** ( http://www.telerik.com/kendo-ui ) da **Telerik** ( http://www.telerik.com ) e objetivo dessa classe é criar uma classe **php** para cada componente disponibilizado pelo **KendoUI**.
 
-Para quem não está familiarizado com o KendoUI ele é um excelente framework Java Script e serve para montar a parte do frontend do site com componentes de excelente qualidade. O problema é que ele é um ferramenta cara e a versão mais barata, a minha, não dá suporte ao backend, então eu fiz este código para poder ter minhas próprias classes **php** funcionando de forma correta e prática. 
+Para quem não está familiarizado com o KendoUI ele é um excelente framework Java Script e serve para montar a parte do frontend do site com componentes de excelente qualidade. O problema é apenas o preço, e a versão mais barata, a minha, não dá suporte ao backend, então eu fiz este código para poder ter minhas próprias classes **php** funcionando de forma correta e prática. 
 
-A classe usa o diretório de saída **"./class/output/"** e dentro dele vai haver uma classe para cada módulo processado.
+### Funcionamento
 
-Perceba que a classe vai criar uma nova classe **php** pronta para uso, porém, esta nova classe necessita da classe **javascript.class.php** contida neste repositório para funcionar.
+A classe executa a leitura do endereço passado na inicialização e em seguida trata o texto, seprando os elementos da documentação oficial e em seguida usa esses elementos para montar uma nova classe **php** devidamente documentada e quase pronta para o uso.
 
-### Instruções de uso:
+Caso seja a primeira vez que o código roda, ele irá criar dentro do diretório **"./class/output/"** um novo arquivo contendo a nova classe, porém, se o código já tiver rodado alguma vez, antes de reescrever o arquivo de saída, a classe vai procurar pelo trexo de código abaixo e salvar, permitindo que você possa fazer alterações na classe que não sejam perdidas.
+
+```
+//---------- inicio codigo importante
+//
+//Coisas que não serão apagadas podem ser digitadas aqui dentro.
+//
+
+public function toHtmlOutput ()
+{
+  self::$mainHtmlCodeCStr .= "<input id=\"{$this->idElementCStr}\" {$this->htmlTagExtraCStr}>";
+  return self::$mainHtmlCodeCStr;
+}
+
+
+//---------- fim codigo importante
+```
+
+Apenas tenha em mente de **não alterar as linhas de comentários**, ou o processo vai falhar. Também é bom verificar se o elemento html do método **toHtmlOutput ()** está correto.
+
+Perceba ainda a necessidade da classe **javascript.class.php** contida neste repositório para que a nova classe possa funcionar.
+
+### Instruções de uso
 
 Coloque o arquivo da classe no seu servidor e depois instancie a classe da seguinte forma:
 
@@ -18,9 +40,50 @@ Coloque o arquivo da classe no seu servidor e depois instancie a classe da segui
 new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete" );
 ```
 
-**Obs.:** Você deve fazer o mesmo para cada módulo.
+Veja os exemplos que eu testei:
 
-No exemplo acima, é usada a URL do módulo **autocomplete**, onde a documentação do mesmo fica em **"http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete"**. Após a classe rodar, a mesma vai gerar o seguinte código no diretório de saída:
+```
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/button" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/calendar" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/colorpalette" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/colorpicker" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/combobox" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/contextmenu" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/datepicker" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/datetimepicker" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/draggable" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/droptarget" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/droptargetarea" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/flatcolorpicker" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/listview" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/maskedtextbox" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/menu" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/notification" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/numerictextbox" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/pager" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/panelbar" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/pivotconfigurator" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/pivotgrid" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/rangeslider" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/responsivepanel" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/slider" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/sortable" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/splitter" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/tabstrip" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/timepicker" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/toolbar" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/tooltip" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/treelist" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/treeview" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/upload" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/validator" );
+  $o = new classMaker( "http://docs.telerik.com/kendo-ui/api/javascript/ui/window" );
+```
+
+No primeiro exemplo, é usada a URL do módulo **autocomplete**, onde a documentação do mesmo fica em **"http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete"**. Após o código rodar, a mesmo vai gerar o seguinte código no diretório de saída:
 
 ```php
 ./class/output/KendoUIAutoComplete.class.php
@@ -1392,30 +1455,6 @@ No exemplo acima, é usada a URL do módulo **autocomplete**, onde a documentaç
   }
 ```
 
-Dentro da classe há o seguinte código:
-
-```
-//---------- inicio codigo importante
-//
-//Coisas que não serão apagadas podem ser digitadas aqui dentro.
-//
-
-public function toHtmlOutput ()
-{
-  self::$mainHtmlCodeCStr .= "<input id=\"{$this->idElementCStr}\" {$this->htmlTagExtraCStr}>";
-  return self::$mainHtmlCodeCStr;
-}
-
-
-//---------- fim codigo importante
-```
-
-### Cuidado:
-
-**Não mexa** nas linhas de comentário. A próxima vez que a classe rodar, o conteúdo entre as linhas de comentários não será apagado.
-
-A função **toHtmlOutput ()** deve ser feita na mão e deve conter o elemento html correspondente ao elemento Java Script como determinado na classe do próprio **KendoUI**.
-
 ### Atenção:
 
 Esta classe usa tags html muito bem padronizadas pela documentação e caso a documentação mude de padrão, a mesma deixa de funcionar.
@@ -1424,4 +1463,4 @@ Lembre-se, este conjunto de código é fornecido com o intuito de ajudar, porém
 
 O código é livre para ser copiado e alterado, porém, sempre que você fizer qualquer alteração no mesmo, você deve deixar claro que o seu trabalho se baseia no meu trabalho e divulgar o meu nome.
 
-Ass. Helmut Kemper - helmut.kemper@gmail.com
+Ass. **Helmut Kemper** - **helmut.kemper@gmail.com**
